@@ -6,12 +6,12 @@
   <title>Feature Graveyard — Product Failure Intelligence</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ── Header ─────────────────────────────────────────── -->
+  <!-- ══ HEADER ═══════════════════════════════════════════════ -->
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
@@ -21,135 +21,211 @@
           <p class="brand-sub">Product Failure Intelligence</p>
         </div>
       </div>
-      <div class="header-meta">
-        <span class="header-badge" id="totalBadge">— features indexed</span>
-      </div>
+      <nav class="header-nav" aria-label="Page sections">
+        <a href="#insights"  class="nav-link">Insights</a>
+        <a href="#timeline"  class="nav-link">Timeline</a>
+        <a href="#leaderboard" class="nav-link">Leaderboard</a>
+        <a href="#lessons"   class="nav-link">Lessons</a>
+        <a href="#submit"    class="nav-link nav-cta">Submit a Feature</a>
+      </nav>
     </div>
   </header>
 
-  <!-- ── Main ──────────────────────────────────────────── -->
+  <!-- ══ MAIN ═════════════════════════════════════════════════ -->
   <main>
 
-    <!-- Hero strip -->
-    <section class="hero-strip">
-      <div class="container">
-        <p class="hero-copy">
-          Every feature below cost real engineering time, real money, and real damage to user trust.
-          <strong>Study them so you don't repeat them.</strong>
-        </p>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="hero-eyebrow">Product Intelligence Platform</p>
+          <h2 class="hero-headline">
+            Every dead feature is a<br/>
+            <span class="hero-highlight">lesson waiting to be learned.</span>
+          </h2>
+          <p class="hero-body">
+            Feature Graveyard catalogs abandoned product features from the world's most innovative companies.
+            Search, analyze, and build better products by studying what failed — and why.
+          </p>
+          <div class="hero-actions">
+            <a href="#features" class="btn btn-primary">Browse the Graveyard</a>
+            <a href="#submit"   class="btn btn-ghost">Submit a Feature</a>
+          </div>
+        </div>
+        <div class="hero-stats" id="heroStats">
+          <div class="hero-stat"><span class="hs-num" id="hstatTotal">—</span><span class="hs-lbl">Features Catalogued</span></div>
+          <div class="hero-stat"><span class="hs-num" id="hstatCompanies">—</span><span class="hs-lbl">Companies Studied</span></div>
+          <div class="hero-stat"><span class="hs-num" id="hstatSpan">—</span><span class="hs-lbl">Years of Data</span></div>
+        </div>
       </div>
     </section>
 
-    <!-- Controls -->
+    <!-- ── Search & Filter ──────────────────────────────────── -->
     <div class="controls-bar">
       <div class="container controls-inner">
-
-        <!-- Search -->
         <div class="search-wrap">
           <svg class="search-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
             <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.6"/>
             <path d="M13 13l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
           </svg>
-          <input
-            id="searchInput"
-            class="search-input"
-            type="search"
+          <input id="searchInput" class="search-input" type="search"
             placeholder="Search feature, company, or lesson…"
-            autocomplete="off"
-            aria-label="Search features"
-          />
+            autocomplete="off" aria-label="Search features" />
         </div>
-
-        <!-- Company filter -->
         <div class="filter-wrap">
           <label class="filter-label" for="companyFilter">Company</label>
           <select id="companyFilter" class="filter-select" aria-label="Filter by company">
             <option value="all">All companies</option>
           </select>
         </div>
-
-        <!-- Result count -->
         <span class="result-count" id="resultCount"></span>
-
       </div>
     </div>
 
-    <!-- Stats row -->
-    <div class="container">
-      <div class="stats-row" id="statsRow">
-        <div class="stat-pill">
-          <span class="stat-num" id="statTotal">—</span>
-          <span class="stat-lbl">catalogued</span>
-        </div>
-        <div class="stat-pill accent-red">
-          <span class="stat-num" id="statEarliest">—</span>
-          <span class="stat-lbl">earliest failure</span>
-        </div>
-        <div class="stat-pill accent-amber">
-          <span class="stat-num" id="statLatest">—</span>
-          <span class="stat-lbl">most recent</span>
-        </div>
-        <div class="stat-pill accent-purple">
-          <span class="stat-num" id="statCompanies">—</span>
-          <span class="stat-lbl">companies</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Insights section ──────────────────────────────── -->
-    <section class="insights-section">
+    <!-- ── Intelligence Insights ────────────────────────────── -->
+    <section class="page-section" id="insights">
       <div class="container">
         <div class="section-header">
-          <div class="section-title-wrap">
-            <span class="section-eyebrow">Intelligence Layer</span>
-            <h2 class="section-title">Product Failure Insights</h2>
-            <p class="section-sub">Patterns extracted from the full dataset. Updated every time new features are added.</p>
-          </div>
+          <span class="section-eyebrow">Intelligence Layer</span>
+          <h2 class="section-title">Product Failure Insights</h2>
+          <p class="section-sub">Patterns extracted automatically from the full dataset.</p>
         </div>
-
-        <!-- KPI row -->
         <div class="insights-kpi-row" id="insightsKpiRow">
           <div class="kpi-card skeleton-kpi"></div>
           <div class="kpi-card skeleton-kpi"></div>
           <div class="kpi-card skeleton-kpi"></div>
           <div class="kpi-card skeleton-kpi"></div>
         </div>
-
-        <!-- Detail row -->
-        <div class="insights-detail-row" id="insightsDetailRow">
-          <div class="insight-detail-card" id="insightCompanyBreakdown">
-            <p class="insight-detail-label">Failed Experiments by Company</p>
+        <div class="insights-detail-row">
+          <div class="insight-detail-card">
+            <p class="insight-detail-label">Failures by Company</p>
             <div class="bar-chart" id="barChart"></div>
           </div>
           <div class="insight-detail-card">
-            <p class="insight-detail-label">More Patterns</p>
-            <div class="insight-facts" id="insightFacts"></div>
+            <p class="insight-detail-label">Key Statistics</p>
+            <div id="insightFacts"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Cards grid -->
-    <div class="container">
-      <div class="cards-grid" id="cardsGrid">
-        <!-- skeleton -->
-        <div class="card skeleton"></div>
-        <div class="card skeleton"></div>
-        <div class="card skeleton"></div>
-        <div class="card skeleton"></div>
-        <div class="card skeleton"></div>
-        <div class="card skeleton"></div>
+    <!-- ── Timeline ─────────────────────────────────────────── -->
+    <section class="page-section page-section--alt" id="timeline">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Chronology</span>
+          <h2 class="section-title">Timeline of Failed Features</h2>
+          <p class="section-sub">When were these experiments launched — and when did they end?</p>
+        </div>
+        <div class="timeline-wrap" id="timelineWrap">
+          <div class="timeline-loading">Building timeline…</div>
+        </div>
       </div>
-      <p class="empty-state" id="emptyState" hidden>No features match your search.</p>
-    </div>
+    </section>
+
+    <!-- ── Company Leaderboard ──────────────────────────────── -->
+    <section class="page-section" id="leaderboard">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Experimentation Index</span>
+          <h2 class="section-title">Company Leaderboard</h2>
+          <p class="section-sub">Which companies ship the most experiments — and kill the most too?</p>
+        </div>
+        <div class="leaderboard-grid" id="leaderboardGrid"></div>
+      </div>
+    </section>
+
+    <!-- ── Lessons Library ──────────────────────────────────── -->
+    <section class="page-section page-section--alt" id="lessons">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Curated Knowledge</span>
+          <h2 class="section-title">Product Lessons Library</h2>
+          <p class="section-sub">Distilled insights every product manager should internalize.</p>
+        </div>
+        <div class="lessons-grid" id="lessonsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ── Feature Cards ────────────────────────────────────── -->
+    <section class="page-section" id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">The Archive</span>
+          <h2 class="section-title">The Graveyard</h2>
+          <p class="section-sub">Every entry is a real product experiment that didn't survive.</p>
+        </div>
+        <div class="cards-grid" id="cardsGrid">
+          <div class="card skeleton"></div>
+          <div class="card skeleton"></div>
+          <div class="card skeleton"></div>
+          <div class="card skeleton"></div>
+          <div class="card skeleton"></div>
+          <div class="card skeleton"></div>
+        </div>
+        <p class="empty-state" id="emptyState" hidden>No features match your search.</p>
+      </div>
+    </section>
+
+    <!-- ── Submit Form ───────────────────────────────────────── -->
+    <section class="page-section page-section--alt" id="submit">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Contribute</span>
+          <h2 class="section-title">Submit a Failed Feature</h2>
+          <p class="section-sub">Help the community learn. Add a feature you witnessed fail in the wild.</p>
+        </div>
+        <div class="form-card">
+          <form id="submitForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="fCompany">Company <span class="req">*</span></label>
+                <input id="fCompany"   class="form-input" type="text"   placeholder="e.g. Meta"          maxlength="80"  required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="fFeature">Feature Name <span class="req">*</span></label>
+                <input id="fFeature"   class="form-input" type="text"   placeholder="e.g. Horizon Worlds" maxlength="120" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="fLaunched">Launch Year <span class="req">*</span></label>
+                <input id="fLaunched"  class="form-input" type="number" placeholder="e.g. 2021" min="1990" max="2030" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="fShutdown">Shutdown Year</label>
+                <input id="fShutdown"  class="form-input" type="number" placeholder="e.g. 2024 (leave blank if still active)" min="1990" max="2030" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="fReason">Why it failed <span class="req">*</span></label>
+              <textarea id="fReason" class="form-input form-textarea" placeholder="Describe why this feature failed or was abandoned…" maxlength="500" required></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="fLesson">Product Lesson <span class="req">*</span></label>
+              <textarea id="fLesson" class="form-input form-textarea" placeholder="What should product teams learn from this? e.g. 'Don't force long-form on a short-form platform.'" maxlength="500" required></textarea>
+            </div>
+            <div class="form-footer">
+              <p class="form-note">Submissions are stored temporarily in memory and not persisted.</p>
+              <button type="submit" class="btn btn-primary" id="submitBtn">Submit Feature</button>
+            </div>
+            <div id="formMsg" class="form-msg" hidden></div>
+          </form>
+        </div>
+      </div>
+    </section>
 
   </main>
 
-  <!-- ── Footer ────────────────────────────────────────── -->
+  <!-- ══ FOOTER ════════════════════════════════════════════════ -->
   <footer class="site-footer">
     <div class="container footer-inner">
-      <span>Feature Graveyard &mdash; Product Failure Intelligence</span>
-      <span class="footer-note">Data is illustrative. Build better products by learning from failure.</span>
+      <div class="footer-brand">
+        <span class="footer-icon">🪦</span>
+        <span>Feature Graveyard</span>
+      </div>
+      <p class="footer-tagline">Built for product managers who learn from failure.</p>
+      <p class="footer-note">Data is illustrative. All company names are trademarks of their respective owners.</p>
     </div>
   </footer>
 
