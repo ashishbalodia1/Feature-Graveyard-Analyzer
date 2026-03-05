@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feature Graveyard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-brand">
+        <span class="header-icon">🪦</span>
+        <h1>Feature Graveyard</h1>
+      </div>
+      <p class="header-tagline">
+        Real failed features. Real lessons. Better product decisions.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Stats bar -->
+    <section class="stats-bar" id="statsBar">
+      <div class="stat-card">
+        <span class="stat-number" id="statTotal">—</span>
+        <span class="stat-label">Total Features</span>
+      </div>
+      <div class="stat-card dead">
+        <span class="stat-number" id="statDead">—</span>
+        <span class="stat-label">Dead</span>
+      </div>
+      <div class="stat-card at-risk">
+        <span class="stat-number" id="statAtRisk">—</span>
+        <span class="stat-label">At Risk</span>
+      </div>
+      <div class="stat-card healthy">
+        <span class="stat-number" id="statHealthy">—</span>
+        <span class="stat-label">Healthy</span>
+      </div>
+    </section>
+
+    <!-- Filter bar -->
+    <section class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="dead">Dead</button>
+      <button class="filter-btn" data-filter="at-risk">At Risk</button>
+      <button class="filter-btn" data-filter="healthy">Healthy</button>
+    </section>
+
+    <!-- Feature cards grid -->
+    <section class="features-grid" id="featuresGrid">
+      <p class="loading-text">Loading features...</p>
+    </section>
+
+  </main>
+
+  <!-- Feature detail modal -->
+  <div class="modal-overlay" id="modalOverlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Feature Graveyard &mdash; A product intelligence platform for builders who learn from failure.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

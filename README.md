@@ -1,6 +1,166 @@
-# Feature Graveyard Analyzer
+# 🪦 Feature Graveyard
 
-> **Product Spec v1.0** — SaaS Analytics Platform
+> A product intelligence platform that collects failed or abandoned features from tech companies and extracts actionable insights for product managers.
+
+---
+
+## What Is Feature Graveyard?
+
+Every software product carries a graveyard of features — things that were built, shipped, and quietly forgotten. These dead features cost real engineering time to maintain, clutter the user interface, and erode product quality over time.
+
+**Feature Graveyard** is a web platform that:
+
+- Catalogs real failed and abandoned features from tech products
+- Scores each feature with an objective **Feature Health Score (FHS)**
+- Surfaces the root causes of failure — poor adoption, high abandonment, engineering waste
+- Delivers curated lessons learned so product teams can avoid repeating the same mistakes
+
+---
+
+## Why Failed Features Matter
+
+Most product teams study success. Almost none systematically study failure.
+
+Yet the data is clear:
+
+| The Problem | The Cost |
+|---|---|
+| ~80% of features in the average SaaS product are used by fewer than 20% of users | Engineering cycles wasted on maintenance |
+| Dead features are rarely removed — they persist for years | UX clutter that hurts activation and retention |
+| Teams repeat the same feature mistakes across companies | No institutional memory of what fails and why |
+
+By building a shared intelligence layer on top of product failures, Feature Graveyard gives product teams a competitive edge: **learn from the mistakes of others before you make them yourself.**
+
+---
+
+## Who It Is Built For
+
+### Product Managers
+Get a curated library of real failed features, organized by category and status. Use the lessons learned to pressure-test your own roadmap before committing engineering resources.
+
+### Founders & CPOs
+Understand which feature categories consistently fail across companies (collaboration tools, legacy reporting, complex export wizards) so you can either avoid them or approach them with hard-won wisdom.
+
+### Engineering Leaders
+Quantify the engineering cost of dead features — days of work, lines of code — to build a business case for deprecation sprints and codebase cleanup.
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Server | Node.js + Express |
+| API | REST (JSON) |
+| Frontend | Vanilla JS, HTML5, CSS3 |
+| Data | JSON flat-file (upgradeable to PostgreSQL) |
+| Dev tooling | Nodemon |
+
+---
+
+## Getting Started
+
+### Prerequisites
+- Node.js v18 or higher
+- npm v9 or higher
+
+### Installation
+
+```bash
+git clone https://github.com/parimeena404/Feature-Graveyard-Analyzer.git
+cd Feature-Graveyard-Analyzer
+npm install
+```
+
+### Run in development mode
+
+```bash
+npm run dev
+```
+
+Server starts at `http://localhost:3000`
+
+### Run in production mode
+
+```bash
+npm start
+```
+
+---
+
+## API Reference
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/features` | Return all features |
+| `GET` | `/api/features/:id` | Return a single feature by ID |
+| `GET` | `/api/features/filter/status/:status` | Filter by `dead`, `at-risk`, or `healthy` |
+
+### Example Response
+
+```json
+{
+  "success": true,
+  "count": 5,
+  "data": [
+    {
+      "id": "feat-001",
+      "name": "CSV Export",
+      "company": "Acme Analytics",
+      "status": "dead",
+      "featureHealthScore": 14,
+      "adoptionRatePct": 3.2,
+      "lessonsLearned": ["..."]
+    }
+  ]
+}
+```
+
+---
+
+## Project Structure
+
+```
+feature-graveyard/
+│
+├── server/
+│   ├── server.js          # Express app entry point
+│   └── routes/
+│       └── features.js    # Feature API routes
+│
+├── public/
+│   ├── index.html         # Application shell
+│   ├── style.css          # Dark-mode UI styles
+│   └── app.js             # Frontend logic (fetch, render, filter)
+│
+├── data/
+│   └── features.json      # Feature dataset (seed data)
+│
+├── package.json
+└── README.md
+```
+
+---
+
+## Feature Health Score
+
+Each feature is scored 0–100 based on a weighted formula:
+
+$$
+FHS = (Adoption \times 0.25) + (Retention \times 0.25) + (Depth \times 0.20) + (1 - Abandonment) \times 0.15 + (Trend \times 0.10) + (Sentiment \times 0.05)
+$$
+
+| Score | Grade | Status |
+|---|---|---|
+| 80–100 | A | Healthy |
+| 60–79 | B | Stable |
+| 40–59 | C | At Risk |
+| 20–39 | D | Dying |
+| 0–19 | F | Dead |
+
+---
+
+*Feature Graveyard — Learn from the features that didn't make it.*
 > Status: Definition Phase | Owner: Product Team | Last Updated: March 2026
 
 ---

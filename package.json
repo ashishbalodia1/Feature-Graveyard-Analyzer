@@ -1,0 +1,31 @@
+{
+  "name": "feature-graveyard",
+  "version": "1.0.0",
+  "description": "A product intelligence platform that collects failed or abandoned product features and extracts insights for product managers.",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js",
+    "test": "echo \"No tests configured yet\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashishbalodia1/Feature-Graveyard-Analyzer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ashishbalodia1/Feature-Graveyard-Analyzer/issues"
+  },
+  "homepage": "https://github.com/ashishbalodia1/Feature-Graveyard-Analyzer#readme",
+  "dependencies": {
+    "axios": "^1.13.6",
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
