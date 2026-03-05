@@ -3,71 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Feature Graveyard</title>
+  <title>Feature Graveyard — Product Failure Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+  <!-- ── Header ─────────────────────────────────────────── -->
   <header class="site-header">
-    <div class="container">
-      <div class="header-brand">
-        <span class="header-icon">🪦</span>
-        <h1>Feature Graveyard</h1>
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">🪦</div>
+        <div class="brand-text">
+          <h1>Feature Graveyard</h1>
+          <p class="brand-sub">Product Failure Intelligence</p>
+        </div>
       </div>
-      <p class="header-tagline">
-        Real failed features. Real lessons. Better product decisions.
-      </p>
+      <div class="header-meta">
+        <span class="header-badge" id="totalBadge">— features indexed</span>
+      </div>
     </div>
   </header>
 
-  <main class="container">
+  <!-- ── Main ──────────────────────────────────────────── -->
+  <main>
 
-    <!-- Stats bar -->
-    <section class="stats-bar" id="statsBar">
-      <div class="stat-card">
-        <span class="stat-number" id="statTotal">—</span>
-        <span class="stat-label">Total Features</span>
-      </div>
-      <div class="stat-card dead">
-        <span class="stat-number" id="statDead">—</span>
-        <span class="stat-label">Dead</span>
-      </div>
-      <div class="stat-card at-risk">
-        <span class="stat-number" id="statAtRisk">—</span>
-        <span class="stat-label">At Risk</span>
-      </div>
-      <div class="stat-card healthy">
-        <span class="stat-number" id="statHealthy">—</span>
-        <span class="stat-label">Healthy</span>
+    <!-- Hero strip -->
+    <section class="hero-strip">
+      <div class="container">
+        <p class="hero-copy">
+          Every feature below cost real engineering time, real money, and real damage to user trust.
+          <strong>Study them so you don't repeat them.</strong>
+        </p>
       </div>
     </section>
 
-    <!-- Filter bar -->
-    <section class="filter-bar">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="dead">Dead</button>
-      <button class="filter-btn" data-filter="at-risk">At Risk</button>
-      <button class="filter-btn" data-filter="healthy">Healthy</button>
-    </section>
+    <!-- Controls -->
+    <div class="controls-bar">
+      <div class="container controls-inner">
 
-    <!-- Feature cards grid -->
-    <section class="features-grid" id="featuresGrid">
-      <p class="loading-text">Loading features...</p>
-    </section>
+        <!-- Search -->
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M13 13l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <input
+            id="searchInput"
+            class="search-input"
+            type="search"
+            placeholder="Search feature, company, or lesson…"
+            autocomplete="off"
+            aria-label="Search features"
+          />
+        </div>
+
+        <!-- Company filter -->
+        <div class="filter-wrap">
+          <label class="filter-label" for="companyFilter">Company</label>
+          <select id="companyFilter" class="filter-select" aria-label="Filter by company">
+            <option value="all">All companies</option>
+          </select>
+        </div>
+
+        <!-- Result count -->
+        <span class="result-count" id="resultCount"></span>
+
+      </div>
+    </div>
+
+    <!-- Stats row -->
+    <div class="container">
+      <div class="stats-row" id="statsRow">
+        <div class="stat-pill">
+          <span class="stat-num" id="statTotal">—</span>
+          <span class="stat-lbl">catalogued</span>
+        </div>
+        <div class="stat-pill accent-red">
+          <span class="stat-num" id="statEarliest">—</span>
+          <span class="stat-lbl">earliest failure</span>
+        </div>
+        <div class="stat-pill accent-amber">
+          <span class="stat-num" id="statLatest">—</span>
+          <span class="stat-lbl">most recent</span>
+        </div>
+        <div class="stat-pill accent-purple">
+          <span class="stat-num" id="statCompanies">—</span>
+          <span class="stat-lbl">companies</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="container">
+      <div class="cards-grid" id="cardsGrid">
+        <!-- skeleton -->
+        <div class="card skeleton"></div>
+        <div class="card skeleton"></div>
+        <div class="card skeleton"></div>
+        <div class="card skeleton"></div>
+        <div class="card skeleton"></div>
+        <div class="card skeleton"></div>
+      </div>
+      <p class="empty-state" id="emptyState" hidden>No features match your search.</p>
+    </div>
 
   </main>
 
-  <!-- Feature detail modal -->
-  <div class="modal-overlay" id="modalOverlay" hidden>
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
-      <div class="modal-body" id="modalBody"></div>
-    </div>
-  </div>
-
+  <!-- ── Footer ────────────────────────────────────────── -->
   <footer class="site-footer">
-    <div class="container">
-      <p>Feature Graveyard &mdash; A product intelligence platform for builders who learn from failure.</p>
+    <div class="container footer-inner">
+      <span>Feature Graveyard &mdash; Product Failure Intelligence</span>
+      <span class="footer-note">Data is illustrative. Build better products by learning from failure.</span>
     </div>
   </footer>
 
