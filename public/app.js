@@ -1,16 +1,25 @@
 'use strict';
 
-const API = '/api/features';
+const API          = '/api/features';
+const INSIGHTS_API = '/api/insights';
 
 let allFeatures = [];
 
 // ─── Fetch & Bootstrap ────────────────────────────────────────────
 async function init() {
   try {
-    const res = await fetch(API);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    allFeatures = await res.json();
+    const [featRes, insRes] = await Promise.all([
+      fetch(API),
+      fetch(INSIGHTS_API),
+    ]);
+    if (!featRes.ok) throw new Error(`Features HTTP ${featRes.status}`);
+    if (!insRes.ok)  throw new Error(`Insights HTTP ${insRes.status}`);
+
+    allFeatures      = await featRes.json();
+    const insights   = await insRes.json();
+
     bootstrap();
+    renderInsights(insights);
   } catch (err) {
     document.getElementById('cardsGrid').innerHTML =
       '<p class="empty-state" style="display:block">Failed to load data — is the server running?</p>';
@@ -132,3 +141,69 @@ function esc(str) {
 
 // ─── Go ───────────────────────────────────────────────────────────
 init();
+
+// ─── Insights renderer ───────────────────────────────────────────
+function renderInsights(d) {
+  // KPI cards
+  const kpis = [
+    {
+      icon: '📊',
+      label: 'Top Failure Reason',
+      value: d.topFailureReason,
+      color: 'red',
+    },
+    {
+      icon: '⏱️',
+      label: 'Avg Feature Lifespan',
+      value: d.averageLifespan,
+      color: 'amber',
+    },
+    {
+      icon: '🧪',
+      label: 'Most Experimental Co.',
+      value: d.mostExperimentalCompany,
+      sub: `${d.mostExperimentalCompanyCount} features`,
+      color: 'purple',
+    },
+    {
+      icon: '⚠️',
+      label: 'Riskiest Category',
+      value: d.topRiskCategory,
+      color: 'green',
+    },
+  ];
+
+  document.getElementById('insightsKpiRow').innerHTML = kpis.map(k => `
+    <div class="kpi-card kpi-${k.color}">
+      <span class="kpi-icon" aria-hidden="true">${k.icon}</span>
+      <div class="kpi-body">
+        <p class="kpi-label">${esc(k.label)}</p>
+        <p class="kpi-value">${esc(k.value)}</p>
+        ${k.sub ? `<p class="kpi-sub">${esc(k.sub)}</p>` : ''}
+      </div>
+    </div>`).join('');
+
+  // Bar chart — company breakdown
+  const max = d.companyBreakdown[0].count;
+  document.getElementById('barChart').innerHTML = d.companyBreakdown.map(item => `
+    <div class="bar-row">
+      <span class="bar-company">${esc(item.company)}</span>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:${(item.count / max) * 100}%" aria-label="${item.count} feature${item.count > 1 ? 's' : ''}"></div>
+      </div>
+      <span class="bar-count">${item.count}</span>
+    </div>`).join('');
+
+  // Additional fact pills
+  const facts = [
+    { label: 'Shortest-lived feature',  value: d.shortestLivedFeature },
+    { label: 'Worst shutdown year',      value: `${d.worstShutdownYear} (${d.worstShutdownYearCount} features)` },
+    { label: 'Total features analyzed', value: String(d.totalAnalyzed) },
+  ];
+
+  document.getElementById('insightFacts').innerHTML = facts.map(f => `
+    <div class="fact-row">
+      <span class="fact-label">${esc(f.label)}</span>
+      <span class="fact-value">${esc(f.value)}</span>
+    </div>`).join('');
+}
