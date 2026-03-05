@@ -1,102 +1,82 @@
 [
   {
-    "id": "feat-001",
-    "name": "CSV Export",
-    "company": "Acme Analytics",
-    "category": "Reporting",
-    "launchedAt": "2023-06-01",
-    "abandonedAt": "2024-01-15",
-    "status": "dead",
-    "adoptionRatePct": 3.2,
-    "retentionRatePct": 8.5,
-    "featureHealthScore": 14,
-    "estimatedEngineeringCostDays": 45,
-    "reasonAbandoned": "Users preferred direct dashboard downloads. The export wizard had a 74% abandonment rate at Step 2.",
-    "lessonsLearned": [
-      "Multi-step flows need progress indicators and save-draft capability",
-      "Validate demand with a fake door test before building the full wizard",
-      "Export formats should match the tools users already use (Excel, not CSV)"
-    ],
-    "tags": ["export", "reporting", "data"]
+    "company": "Google",
+    "feature": "Google+",
+    "launched": 2011,
+    "shutdown": 2019,
+    "reason": "Low organic engagement, fake account crisis, and a data-exposure security breach accelerated the shutdown",
+    "lesson": "Forcing users onto a new social network by bundling it with existing products creates accounts, not engagement"
   },
   {
-    "id": "feat-002",
-    "name": "In-App Chat",
-    "company": "Startupio",
-    "category": "Collaboration",
-    "launchedAt": "2022-11-01",
-    "abandonedAt": "2023-08-20",
-    "status": "dead",
-    "adoptionRatePct": 1.8,
-    "retentionRatePct": 5.0,
-    "featureHealthScore": 9,
-    "estimatedEngineeringCostDays": 120,
-    "reasonAbandoned": "Users had established Slack workflows. No pull from the market; feature was a solution looking for a problem.",
-    "lessonsLearned": [
-      "Don't compete with entrenched communication tools",
-      "Integration with existing tools (Slack, Teams) would have cost 10% of the effort",
-      "Conduct Jobs-to-be-Done interviews before committing to large communication features"
-    ],
-    "tags": ["collaboration", "chat", "communication"]
+    "company": "Amazon",
+    "feature": "Amazon Fire Phone",
+    "launched": 2014,
+    "shutdown": 2015,
+    "reason": "Overpriced, carrier-exclusive (AT&T only), and the gimmick 3D features added no real utility",
+    "lesson": "Hardware differentiation must solve a real problem — novelty alone cannot justify a premium price or a locked ecosystem"
   },
   {
-    "id": "feat-003",
-    "name": "Dark Mode",
-    "company": "BigRetail Platform",
-    "category": "UI/UX",
-    "launchedAt": "2024-08-01",
-    "abandonedAt": null,
-    "status": "at-risk",
-    "adoptionRatePct": 3.0,
-    "retentionRatePct": 9.4,
-    "featureHealthScore": 19,
-    "estimatedEngineeringCostDays": 30,
-    "reasonAbandoned": "Shipped but never promoted. Adoption stalled due to poor discoverability — no in-app announcement or onboarding nudge.",
-    "lessonsLearned": [
-      "Shipping is not enough; features need active promotion pipelines",
-      "Add feature announcements to onboarding flows and changelog emails",
-      "A/B test feature visibility in settings vs. contextual prompt"
-    ],
-    "tags": ["ui", "accessibility", "theme"]
+    "company": "Quibi",
+    "feature": "Quibi (Short-form streaming)",
+    "launched": 2020,
+    "shutdown": 2020,
+    "reason": "Mobile-only format prevented casting to TV, launched during COVID when commutes vanished, and content failed to build loyal audiences",
+    "lesson": "Validate your core use-case assumption (on-the-go viewing) before raising $1.8B and launching"
   },
   {
-    "id": "feat-004",
-    "name": "Legacy Reports",
-    "company": "Acme Analytics",
-    "category": "Reporting",
-    "launchedAt": "2021-03-01",
-    "abandonedAt": "2025-01-01",
-    "status": "dead",
-    "adoptionRatePct": 1.8,
-    "retentionRatePct": 7.1,
-    "featureHealthScore": 11,
-    "estimatedEngineeringCostDays": 200,
-    "reasonAbandoned": "Superseded by a new dashboard builder but never formally deprecated. Maintained in parallel for 3 years at significant engineering cost.",
-    "lessonsLearned": [
-      "Every feature needs a planned deprecation lifecycle from day one",
-      "Sunset timelines should be communicated 90 days in advance",
-      "Running parallel systems doubles maintenance cost without doubling value"
-    ],
-    "tags": ["reporting", "legacy", "deprecation"]
+    "company": "Instagram",
+    "feature": "IGTV",
+    "launched": 2018,
+    "shutdown": 2022,
+    "reason": "Low creator adoption, vertical-only format frustrated creators, and TikTok dominated short-form video attention",
+    "lesson": "Short-form video beats long-form on mobile — meet users where their attention already is"
   },
   {
-    "id": "feat-005",
-    "name": "API Webhooks",
-    "company": "DataFlow Inc.",
-    "category": "Integrations",
-    "launchedAt": "2024-02-10",
-    "abandonedAt": null,
-    "status": "healthy",
-    "adoptionRatePct": 17.5,
-    "retentionRatePct": 44.3,
-    "featureHealthScore": 61,
-    "estimatedEngineeringCostDays": 25,
-    "reasonAbandoned": null,
-    "lessonsLearned": [
-      "Developer-facing features reward investment — power users become champions",
-      "Good API documentation is as important as the feature itself",
-      "Adoption grew 3x after adding a webhook tester UI to reduce setup friction"
-    ],
-    "tags": ["api", "integrations", "developer"]
+    "company": "Microsoft",
+    "feature": "Microsoft Zune",
+    "launched": 2006,
+    "shutdown": 2011,
+    "reason": "Arrived years after the iPod had already won the portable music market; the ecosystem never attracted enough content",
+    "lesson": "Entering a winner-take-all market years late requires a fundamentally different value proposition, not a feature-parity clone"
+  },
+  {
+    "company": "Facebook",
+    "feature": "Facebook Poke",
+    "launched": 2012,
+    "shutdown": 2014,
+    "reason": "Snapchat had already captured the ephemeral messaging behavior; Poke felt like a derivative copy with no unique hook",
+    "lesson": "Cloning a competitor's format into your existing product rarely works when the original already owns the behavior"
+  },
+  {
+    "company": "Clubhouse",
+    "feature": "Clubhouse Payments",
+    "launched": 2021,
+    "shutdown": 2022,
+    "reason": "Clubhouse's core DAU had already collapsed before payments could reach scale; too few active creators remained",
+    "lesson": "Monetisation features only work if the underlying engagement is healthy — do not build creator revenue tools while retention is in freefall"
+  },
+  {
+    "company": "Twitter",
+    "feature": "Twitter Fleets",
+    "launched": 2020,
+    "shutdown": 2021,
+    "reason": "Users who wanted ephemeral Stories already used Instagram or Snapchat; Fleets added friction to Twitter's text-first experience",
+    "lesson": "Importing a feature format that works elsewhere does not guarantee it fits the interaction model of a different product"
+  },
+  {
+    "company": "Snapchat",
+    "feature": "Snap Originals",
+    "launched": 2018,
+    "shutdown": 2023,
+    "reason": "Premium scripted content failed to compete with free UGC and larger streaming budgets; Snapchat's audience expected authentic, not polished",
+    "lesson": "Platform-native content expectations are hard to override — users come for authentic peer content, not broadcast-quality productions"
+  },
+  {
+    "company": "Google",
+    "feature": "Google Stadia",
+    "launched": 2019,
+    "shutdown": 2023,
+    "reason": "High latency on average home internet, a thin game library, full-price purchases with no ownership guarantee, and strong competition from Xbox Cloud Gaming",
+    "lesson": "Cloud gaming requires near-perfect infrastructure before launch; charging full price for games on an unproven platform destroys trust immediately"
   }
 ]
